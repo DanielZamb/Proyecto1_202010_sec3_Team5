@@ -1,6 +1,6 @@
 package model.data_structures;
 
-public class Stack<T> extends ListaEncadenada {
+public class Stack<T> extends ListaEncadenada implements IStack {
     private Nodo<T> top;
     private int tamanio;
 
@@ -21,10 +21,10 @@ public class Stack<T> extends ListaEncadenada {
         return respuesta;
     }
 
-    public void push(Nodo<T> nodo)
+    public void push(Object nodo)
     {
         super.AppendNode((Nodo<T>)nodo);
-        top = super.getPrimerNodo();
+        top = (Nodo<T>)super.getPrimerNodo();
         tamanio = super.getTamanio();
 
     }
@@ -50,7 +50,7 @@ public class Stack<T> extends ListaEncadenada {
      * @param buscado
      * @return el numero de posiciones a las que se encuentra el nodo del tope de la pila
      */
-    public int Buscar (Nodo<T> buscado) {
+    public int Buscar (Object buscado) {
 
         int respuesta = 0;
         Nodo<T> actual = top;
@@ -58,7 +58,7 @@ public class Stack<T> extends ListaEncadenada {
 
         while (actual != null && !done)
         {
-            if (actual.equals(buscado)) {
+            if (actual.equals((Nodo<T>)buscado)) {
                 done=true;
             }
             else respuesta++;

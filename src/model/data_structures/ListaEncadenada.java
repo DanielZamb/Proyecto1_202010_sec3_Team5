@@ -1,6 +1,6 @@
 package model.data_structures;
 
-public class ListaEncadenada<T>{
+public class ListaEncadenada<T> implements IListaEncadenada<T>{
 
     private Nodo<T> primerNodo;
     private Nodo<T> ultimoNodo;
@@ -61,7 +61,7 @@ public class ListaEncadenada<T>{
     }
 
     @Deprecated
-    public void darTamañoLista(){
+    public void darTamanioLista(){
         int contador = 0;
         if (primerNodo!=null){
             Nodo<T> evaluado = primerNodo;

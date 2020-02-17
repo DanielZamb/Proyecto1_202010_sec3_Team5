@@ -12,12 +12,12 @@ import com.google.gson.stream.JsonToken;
 public class GsonParser {
 
     public static void main(String[] args) throws MalformedURLException, IOException {
-        /*Gson gson = new Gson();
+        Gson gson = new Gson();
         String json = "./data/comparendos_dei_2018_small.geojson";
         BufferedReader br = new BufferedReader(new FileReader(json));
         Comparendos comparendos = gson.fromJson(br, Comparendos.class);
         Modelo<Features> mdl = new Modelo(comparendos.darListaFeatures());
-        br.close();*/
+        br.close();
     }
 }
 

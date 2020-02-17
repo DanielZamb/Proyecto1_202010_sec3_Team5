@@ -1,72 +1,56 @@
 package model.logic;
 
-import model.data_structures.ArregloDinamico;
-import model.data_structures.IArregloDinamico;
+import model.data_structures.*;
+import java.util.List;
 
 /**
  * Definicion del modelo del mundo
  *
  */
-public class Modelo {
+public class Modelo<T,S extends Comparable<S>> {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private IArregloDinamico datos;
+	private IArregloDinamico<S> arregloD;
+	private IStack<T> stackComparendos;
+	private IQueue<T> colaComparendos;
+	private IListaEncadenada<T> listaComparendos;
+	private Nodo<T> nodoComparendo;
+	private int tamanio; 
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
-		datos = new ArregloDinamico(7);
+		arregloD = null;
+		tamanio = 0;
 	}
 	
-	/**
-	 * Constructor del modelo del mundo con capacidad dada
-	 * @param tamano
-	 */
-	public Modelo(int capacidad)
+	public Modelo(List<T> listaFeatures)
 	{
-		datos = new ArregloDinamico(capacidad);
+		cargarComparendos(listaFeatures);
 	}
-	
+	public void cargarComparendos(List<T> listaFeatures){
+		try {
+			Nodo<Features> primero = new Nodo<Features>(null, (Features) listaFeatures.get(0));
+			Nodo<Features> ultimo = new Nodo<Features>(null,(Features)listaFeatures.get(listaFeatures.size()-1));
+			listaFeatures.remove(0);
+			colaComparendos = (IQueue<T>)new Queue<T>((Nodo<T>) primero);
+			stackComparendos =(IStack<T>)new Stack<T>((Nodo<T>) primero);
+			listaComparendos = (IListaEncadenada<T>)new ListaEncadenada<T>((Nodo<T>)primero);
+			listaFeatures.forEach(feature -> {
+				nodoComparendo = new Nodo<T>(null,(T) feature);
+				colaComparendos.enqueue((T)nodoComparendo);
+				stackComparendos.push((T)nodoComparendo);
+				listaComparendos.AppendNode(nodoComparendo);
+			});
+			tamanio = stackComparendos.getSize();
+		}catch (Exception e){e.printStackTrace();}
+	}
 	/**
 	 * Servicio de consulta de numero de elementos presentes en el modelo 
 	 * @return numero de elementos presentes en el modelo
 	 */
-	public int darTamano()
-	{
-		return datos.darTamano();
-	}
-
-	/**
-	 * Requerimiento de agregar dato
-	 * @param dato
-	 */
-	public void agregar(String dato)
-	{	
-		datos.agregar(dato);
-	}
-	
-	/**
-	 * Requerimiento buscar dato
-	 * @param dato Dato a buscar
-	 * @return dato encontrado
-	 */
-	public String buscar(String dato)
-	{
-		return datos.buscar(dato);
-	}
-	
-	/**
-	 * Requerimiento eliminar dato
-	 * @param dato Dato a eliminar
-	 * @return dato eliminado
-	 */
-	public String eliminar(String dato)
-	{
-		return datos.eliminar(dato);
-	}
-
 
 }

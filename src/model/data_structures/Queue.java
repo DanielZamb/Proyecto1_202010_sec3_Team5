@@ -1,6 +1,6 @@
 package model.data_structures;
 
-public class Queue<T> extends ListaEncadenada{
+public class Queue<T> extends ListaEncadenada implements IQueue{
 
     private Nodo<T> first;
     private Nodo<T> last;
@@ -20,17 +20,17 @@ public class Queue<T> extends ListaEncadenada{
         tamanio = super.getTamanio();
     }
 
-    public void enqueue(Nodo<T> nodo) {
+    public void enqueue(Object nodo) {
         if (first==null)
         {
-            super.AppendNode(nodo);
-            super.setUltimoNodo(nodo);
+            super.AppendNode((Nodo<T>)nodo);
+            super.setUltimoNodo((Nodo<T>)nodo);
             first = (Nodo<T>)super.getUltimoNodo();
             last = (Nodo<T>)super.getPrimerNodo();
             tamanio = super.getTamanio();
         }
         else {
-            super.AppendNode(nodo);
+            super.AppendNode((Nodo<T>)nodo);
             last = (Nodo<T>)super.getPrimerNodo();
         }
         tamanio = super.getTamanio();
@@ -82,6 +82,9 @@ public class Queue<T> extends ListaEncadenada{
     {
         return last;
     }
+
+
+
 
 
 }
