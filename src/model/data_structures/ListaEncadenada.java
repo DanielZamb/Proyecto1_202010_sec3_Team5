@@ -79,8 +79,8 @@ public class ListaEncadenada<T> implements IListaEncadenada<T>{
         primerNodo = nuevo;
         tamanio++;
     }
-    public void appendNodeInPos(Nodo<T> nuevo, int pos){
-    }
+    public void appendNodeInPos(Nodo<T> nuevo, int pos){}
+    
     public Nodo<T> ConsultarNodo(int pos){
         Nodo<T> buscado = null;
         if (pos==tamanio-1) buscado = ultimoNodo;
@@ -115,5 +115,4 @@ public class ListaEncadenada<T> implements IListaEncadenada<T>{
         }
         tamanio--;
     }
-
 }
