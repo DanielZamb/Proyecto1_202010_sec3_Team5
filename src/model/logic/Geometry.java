@@ -1,4 +1,4 @@
-package model.data_structures;
+package model.logic;
 
 import java.util.List;
 

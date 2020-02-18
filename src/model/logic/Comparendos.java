@@ -2,6 +2,8 @@ package model.data_structures;
 
 import java.util.List;
 
+import model.logic.Features;
+
 public class Comparendos {
     private String type;
     private String name;
