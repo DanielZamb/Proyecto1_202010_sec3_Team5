@@ -54,7 +54,7 @@ public class Modelo<T> {//,S extends Comparable<S>
 			System.out.println("tamaño de la queue: "+colaComparendos.size());
 			System.out.println("tamaño del stack: "+stackComparendos.getSize());
 			System.out.println("tamaño de la lista: "+listaComparendos.getTamanio());
-			System.out.println("Datos cargados en estructuras ----- \n\tTime elapsed loading data: "+ convertET +"seconds");
+			System.out.println("Datos cargados en estructuras -----// \n\tTime elapsed loading data: "+ convertET +" seconds");
 		}catch (Exception e){e.printStackTrace();}
 	}
 	/**
