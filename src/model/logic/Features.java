@@ -1,6 +1,6 @@
 package model.logic;
 
-public class Features {
+public class Features implements Comparable<Features>{
     private String type;
     private Properties properties;
     private Geometry geometry;
@@ -40,5 +40,28 @@ public class Features {
                 "Coordenadas GPS:\n"+
                 "\t"+this.geometry.toString();
         return str;
+    }
+
+    @Override
+    public int compareTo(Features that) {
+        if (this.properties.getFECHA_HORA().equalsIgnoreCase(that.properties.getFECHA_HORA())) {
+            if (this.properties.getOBJECTID() > that.properties.getOBJECTID()) return 1;
+            if (this.properties.getOBJECTID().equals(that.properties.getOBJECTID())) return 0;
+            if (this.properties.getOBJECTID() < that.properties.getOBJECTID()) return -1;
+        } else {
+            String[] actual = this.properties.getFECHA_HORA().split("/");
+            int mes = Integer.parseInt(actual[1]);
+            int dia = Integer.parseInt(actual[2]);
+            String[] comp = that.properties.getFECHA_HORA().split("/");
+            int mComp = Integer.parseInt(comp[1]);
+            int dComp = Integer.parseInt(comp[2]);
+            if (mes == mComp) {
+                if (dia > dComp) return 1;
+                if (dia < dComp) return -1;
+            }
+            if (mes > mComp) return 1;
+            if (mes < mComp) return -1;
+        }
+        return -2;
     }
 }

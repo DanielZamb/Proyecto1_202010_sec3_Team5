@@ -1,6 +1,7 @@
 package controller;
 
-import model.*;
+import model.data_structures.*;
+import model.logic.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,11 +22,6 @@ public class Controller {
 	
 	/* Instancia de la Vista*/
 	private View view;
-	
-	/**
-	 * Crear la vista y el modelo del proyecto
-	 * @param capacidad tamaNo inicial del arreglo
-	 */
 	public Controller ()
 	{
 		view = new View();
@@ -52,7 +48,7 @@ public class Controller {
 					BufferedReader br;
 					br = new BufferedReader(new FileReader(json));
 					Comparendos comparendos = gson.fromJson(br, Comparendos.class);
-					Modelo<Features> mdl = new Modelo(comparendos.darListaFeatures());
+					Modelo<Features,Features> mdl = new Modelo(comparendos.darListaFeatures());
 					modelo = mdl;
 					br.close();
 				} catch (FileNotFoundException e) {
@@ -69,7 +65,40 @@ public class Controller {
 			    }
 			    view.printMessage("]");
 				break;
+				case 4:
+					view.printMessage("--------------------------------------\nDigite el codigo de la infraccion a buscar:");
+					dato = lector.next();
+					view.printMessage("Loading...");
+					view.printMessage("Comparendo encontrado en los datos: \n"+modelo.getPrimerComparendoInfrac(dato));
+					break;
+				case 5:
+					view.printMessage("--------------------------------------\nDigite el codigo de la infraccion a buscar:");
+					dato = lector.next();
+					view.printMessage("Loading...");
+					Features[] arr = modelo.getListaComparendosInfrac(dato);
+					for (int i = 0;i<arr.length;i++){
+						view.printMessage(arr[i].getProperties().toString());
+					}
+					view.printMessage("tamanio del arreglo ordenado :"+modelo.getTamanio());
+					break;
+				case 6:
+					view.printMessage("--------------------------------------\nDigite el codigo de la infraccion a buscar:");
+					view.printMessage("Loading...");
+					Object[] res = modelo.compareNumInfraccionesTipoSevicio();
+					String[] infracList = (String[]) res[0];
+					int[] numC = (int[]) res[1];
+					view.printMessage("| INFRACCION | PARTICULAR | PUBLICO |");
+					int i=0;
+					int j =0;
+					for (;i<infracList.length&&j<numC.length;){
+						view.printMessage("| "+infracList[i]+" | "+numC[j]+" | "+numC[j+1]+" |");
+						i++;
+						j+=2;
+					}
+					break;
+
 				}
+
 		}
 		
 	}	
