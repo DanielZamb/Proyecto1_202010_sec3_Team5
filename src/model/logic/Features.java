@@ -94,7 +94,7 @@ public class Features implements Comparable<Features>{
             if (this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)||this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)) return 0;
             else {
                 String[] actual = this.properties.getFECHA_HORA().split("/");
-                String[]
+                //String[];
                 int mes = Integer.parseInt(actual[1]);
                 int dia = Integer.parseInt(actual[2]);
                 if (mes == mComp) {
