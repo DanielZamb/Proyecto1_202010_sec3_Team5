@@ -90,20 +90,39 @@ public class Features implements Comparable<Features>{
 
         return -2;
         }
-        public int compareD(String startDate,String endDate){
-            if (this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)||this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)) return 0;
+        public Boolean compareD(String startDate,String endDate){
+            if (this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)||this.properties.getFECHA_HORA().equalsIgnoreCase(endDate)) return true;
             else {
                 String[] actual = this.properties.getFECHA_HORA().split("/");
-                String[]
-                int mes = Integer.parseInt(actual[1]);
-                int dia = Integer.parseInt(actual[2]);
-                if (mes == mComp) {
-                    if (dia > dComp) return 1;
-                    if (dia < dComp) return -1;
+                String[] sDate = startDate.split("/");
+                String[] eDate = endDate.split("/");
+                int mes,dia,smes,sdia,emes,edia;
+                mes = Integer.parseInt(actual[1]);
+                dia = Integer.parseInt(actual[2]);
+                smes = Integer.parseInt(sDate[1]);
+                sdia = Integer.parseInt(sDate[2]);
+                emes = Integer.parseInt(eDate[1]);
+                edia = Integer.parseInt(eDate[2]);
+                if (mes>smes){
+                    if (mes<emes){
+                        if (dia<edia) return true;
+                    }
                 }
-                if (mes > mComp) return 1;
-                if (mes < mComp) return -1;
+                if (smes==emes){
+                    if (dia>sdia && dia<edia) return true;
+                    if (dia==sdia) return true;
+                    if (dia==edia) return true;
+                    if (sdia == edia)
+                        if(dia == edia) return true;
+                }
+                if (mes == smes){
+                    if (dia > sdia) return true;
+                }
+                if (mes == emes){
+                    if (dia < edia) return true;
+                }
+                else return false;
             }
-        return -2;
+        return false;
         }
 }

@@ -23,17 +23,21 @@ public class Queue<T> extends ListaEncadenada implements IQueue{
     public void enqueue(Object nodo) {
         if (first==null)
         {
-            super.AppendNode((Nodo<T>)nodo);
-            super.setUltimoNodo((Nodo<T>)nodo);
             first = (Nodo<T>)super.getUltimoNodo();
             last = (Nodo<T>)super.getPrimerNodo();
+        }
+        if (first == last){
+            super.AppendNode((Nodo<T>)nodo);
+            last = (Nodo<T>)super.getPrimerNodo();
+            first = (Nodo<T>)super.getUltimoNodo();
             tamanio = super.getTamanio();
         }
         else {
             super.AppendNode((Nodo<T>)nodo);
             last = (Nodo<T>)super.getPrimerNodo();
+            tamanio = super.getTamanio();
         }
-        tamanio = super.getTamanio();
+
     }
 
     public Nodo<T> dequeue ()

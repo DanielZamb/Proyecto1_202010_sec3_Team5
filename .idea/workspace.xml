@@ -4,10 +4,12 @@
     <list default="true" id="4a530e87-66e9-40ee-b5a1-92f9a928aa1b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/data_structures/ArregloDinamico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/ArregloDinamico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/data_structures/IArregloDinamico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/IArregloDinamico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/data_structures/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/Queue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/logic/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Features.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/logic/Merge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Merge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/logic/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Modelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +77,8 @@
       <updated>1582001101967</updated>
       <workItem from="1582001107920" duration="699000" />
       <workItem from="1583001428520" duration="11164000" />
-      <workItem from="1583021383120" duration="17957000" />
+      <workItem from="1583021383120" duration="18055000" />
+      <workItem from="1583159929278" duration="23743000" />
     </task>
     <servers />
   </component>
@@ -96,14 +99,12 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/logic/Modelo.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="queueTemp.last.info.properties" />
+        <watch expression="res" />
+        <watch expression="res" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

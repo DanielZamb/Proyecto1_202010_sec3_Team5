@@ -98,6 +98,44 @@ public class Controller {
 						}
 					}
 					break;
+				case 7:
+					String local="",sDate="",eDate="";
+					view.printMessage("Digite localidad a analizar: \n");
+					local=lector.next();
+					view.printMessage("Digite fecha incial: \n");
+					sDate = lector.next();
+					view.printMessage("Digite fecha final: \n");
+					eDate = lector.next();
+					modelo.mostrarComparendosLocalidadFecha(local,sDate,eDate);
+					view.printMessage("Comparación de comparendos en "+local+" desde "+sDate+" hasta "+eDate);
+					view.printMessage("Loading...");
+					view.printMessage("INFRACCION | #COMPARENDOS");
+					Object[] res_ = modelo.mostrarComparendosLocalidadFecha(local,sDate,eDate);
+					ArregloDinamico<String> infracList_ = (ArregloDinamico<String>)res_[0];
+					ArregloDinamico<Integer> numC_ = (ArregloDinamico<Integer>) res_[1];
+					for (int k =0;k<infracList_.darTamano();k++){
+						view.printMessage(infracList_.darElemento(k)+" | "+ numC_.darElemento(k));
+					}
+					break;
+				case 8:
+					int N=0;
+					String sDate_="",eDate_="";
+					view.printMessage("Digite numero de comparendos a analizar: \n");
+					N =lector.nextInt();
+					view.printMessage("Digite fecha incial: \n");
+					sDate_ = lector.next();
+					view.printMessage("Digite fecha final: \n");
+					eDate_ = lector.next();
+					Object[] res__ = modelo.NInfraccionesMasComparendosPorTiempo(N,sDate_,eDate_);
+					view.printMessage("Ranking de las "+N+" mayores infracciones desde "+sDate_+" hasta "+eDate_);
+					view.printMessage("Loading...");
+					view.printMessage("INFRACCION | #COMPARENDOS");
+					String[] infracList__ = (String[]) res__[0];
+					Integer[] numC__ = (Integer[])res__[1];
+					for (int k =0;k<infracList__.length;k++){
+						view.printMessage(infracList__[k]+" | "+ numC__[k]);
+					}
+					break;
 
 				}
 
