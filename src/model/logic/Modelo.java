@@ -43,7 +43,7 @@ public class Modelo<T, S extends Comparable<S>> {
             Nodo<Features> ultimo = new Nodo<Features>(null, (Features) listaFeatures.get(listaFeatures.size() - 1));
             Features item1 = (Features) listaFeatures.get(0);
             listaFeatures.remove(0);
-            arregloD = (IArregloDinamico<S>) new ArregloDinamico<S>(listaFeatures.size());
+            arregloD = (IArregloDinamico<S>) new ArregloDinamico<S>(listaFeatures.size()+1);
             arregloD.agregar((S) item1);
             colaComparendos = (IQueue<T>) new Queue<T>((Nodo<T>) primero);
             stackComparendos = (IStack<T>) new Stack<T>((Nodo<T>) primero);
@@ -144,51 +144,53 @@ public class Modelo<T, S extends Comparable<S>> {
     }
 
     public Object[] compareNumInfraccionesTipoSevicio() {
-        String[] infracList = new String[300];
-        int[] res = new int[600];
-        int publico, particular;
-        int j = 0;
-        int k = 0;
-        String infra = "";
-        Boolean esta = false;
-        Nodo<Features> iter = (Nodo<Features>) listaComparendos.getPrimerNodo();
-        while (iter != null) {
-            infra = iter.getInfo().getProperties().getINFRACCION();
-            if (infracList[0] != null) {
-            	esta = false;
-                for (int x=0;x<infracList.length&&!esta;x++) {
-					if (infracList[x] == null) break;
-                	esta = infracList[x].equalsIgnoreCase(infra);
-
-                }
+        ArregloDinamico<String> infracList = new ArregloDinamico<>(listaComparendos.getTamanio());
+        ArregloDinamico<Integer> res = new ArregloDinamico<>(listaComparendos.getTamanio());
+        Integer publico = 0, particular = 0;
+        Features[] toSortP = new Features[arregloD.darTamano()];
+        for (int i = 0; i<arregloD.darTamano();i++){
+            toSortP[i] = (Features) arregloD.darElemento(i);
+        }
+        Merge.sortP(toSortP);
+        for(int f = 0; f<toSortP.length-1;f++){
+            String tipo = toSortP[f].getProperties().getTIPO_SERVI();
+            if (toSortP[f].compareToP(toSortP[f+1])==0) {
+                if (tipo.equalsIgnoreCase("público")) publico++;
+                if (tipo.equalsIgnoreCase("particular")) particular++;
             }
-            if (esta) {
-                iter = iter.getSiguiente();
-            } else {
-                infracList[j] = infra;
+            else{
+                if (tipo.equalsIgnoreCase("público")) publico++;
+                if (tipo.equalsIgnoreCase("particular")) particular++;
+                res.agregar(particular);
+                res.agregar(publico);
+                infracList.agregar(toSortP[f].getProperties().getINFRACCION());
                 publico = 0;
                 particular = 0;
-                Features[] lista = getListaComparendosInfrac(infra);
-                for (int i = 0; i < lista.length; i++) {
-                    String tipo = lista[i].getProperties().getTIPO_SERVI();
-					if (tipo.equalsIgnoreCase("público")) publico++;
-                    if (tipo.equalsIgnoreCase("particular")) particular++;
-
-                }
-                res[k] = particular;
-                res[k + 1] = publico;
-                j++;
-                k += 2;
+                tipo = toSortP[f+1].getProperties().getTIPO_SERVI();
+                if (tipo.equalsIgnoreCase("público")) publico++;
+                if (tipo.equalsIgnoreCase("particular")) particular++;
             }
         }
+        infracList.agregar(toSortP[toSortP.length-1].getProperties().getINFRACCION());
+        res.agregar(particular);
+        res.agregar(publico);
         Object[] comparacion = new Object[2];
         comparacion[0] = infracList;
         comparacion[1] = res;
-
         return comparacion;
     }
 
     public void mostrarComparendosLocalidadFecha(String Localidad, String startDate, String endDate) {
+        ArregloDinamico<String> infracList = new ArregloDinamico<>(listaComparendos.getTamanio());
+        ArregloDinamico<Integer> res = new ArregloDinamico<>(listaComparendos.getTamanio());
+        Nodo<Features> iter = (Nodo<Features>) listaComparendos.getPrimerNodo();
+        while(iter!=null){
+            Boolean bLocal = iter.getInfo().getProperties().getLOCALIDAD().equalsIgnoreCase(Localidad);
+            Boolean bStartD = iter.getInfo().compareToP();
+            Boolean bEndD =;
+            if (&&)
+            iter = iter.getSiguiente();
+        }
     }
 
     public void consultarNumInfraccionesMasComparendosPorTiempo(int Num, String startDate, String endDate) {

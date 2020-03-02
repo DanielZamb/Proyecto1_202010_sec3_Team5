@@ -40,7 +40,7 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 			case 1:
-				view.printMessage("--------- \n Cargar comparendos a estructuras : \n-Queue\n-Stack\n-LinkedList ");
+				view.printMessage("--------- \n Cargar comparendos a estructuras : \n-Queue\n-Stack\n-LinkedList\n-ArrayList ");
 				view.printMessage("Loading...");
 				try {
 					Gson gson = new Gson();
@@ -82,18 +82,20 @@ public class Controller {
 					view.printMessage("tamanio del arreglo ordenado :"+modelo.getTamanio());
 					break;
 				case 6:
-					view.printMessage("--------------------------------------\nDigite el codigo de la infraccion a buscar:");
+					view.printMessage("--------------------------------------");
 					view.printMessage("Loading...");
 					Object[] res = modelo.compareNumInfraccionesTipoSevicio();
-					String[] infracList = (String[]) res[0];
-					int[] numC = (int[]) res[1];
+					ArregloDinamico<String> infracList = (ArregloDinamico<String>)res[0];
+					ArregloDinamico<Integer> numC = (ArregloDinamico<Integer>) res[1];
 					view.printMessage("| INFRACCION | PARTICULAR | PUBLICO |");
 					int i=0;
 					int j =0;
-					for (;i<infracList.length&&j<numC.length;){
-						view.printMessage("| "+infracList[i]+" | "+numC[j]+" | "+numC[j+1]+" |");
+					for (;i<infracList.darTamano()&&j<numC.darTamano();){
+						if (infracList.darElemento(i)!= null){
+						view.printMessage("| "+infracList.darElemento(i)+" | "+numC.darElemento(j)+" | "+numC.darElemento(j+1)+" |");
 						i++;
 						j+=2;
+						}
 					}
 					break;
 

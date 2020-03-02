@@ -64,4 +64,46 @@ public class Features implements Comparable<Features>{
         }
         return -2;
     }
+    public int compareToP(Features that){
+            int comp = 0;
+            String[] thisInfrac = this.getProperties().getINFRACCION().split("");
+            String[] thatInfrac = that.getProperties().getINFRACCION().split("");
+            Boolean comp1 = thisInfrac[0].equalsIgnoreCase(thatInfrac[0]);
+            if (thisInfrac[0].compareToIgnoreCase(thatInfrac[0])>0) return 1;
+            if (thisInfrac[0].compareToIgnoreCase(thatInfrac[0])<0) return -1;
+            if (comp1) {
+                if (thisInfrac.length >1 && thatInfrac.length>1) {
+                    if (thisInfrac[1].compareToIgnoreCase(thatInfrac[1])>0) return 1;
+                    if (thisInfrac[1].compareToIgnoreCase(thatInfrac[1])<0) return -1;
+                    Boolean comp2 = thisInfrac[1].equalsIgnoreCase(thatInfrac[1]);
+                    Boolean comp3 = thisInfrac[2].equalsIgnoreCase(thatInfrac[2]);
+                    if (comp2) {
+                        if (thisInfrac[2].compareToIgnoreCase(thatInfrac[2]) > 0) return 1;
+                        if (thisInfrac[2].compareToIgnoreCase(thatInfrac[2]) < 0) return -1;
+                    }
+                    if (comp1&&comp2&&comp3) return 0;
+                }
+                if  (thisInfrac.length<thatInfrac.length) return -1;
+                if  (thisInfrac.length>thatInfrac.length) return 1;
+                else return 0;
+            }
+
+        return -2;
+        }
+        public int compareD(String startDate,String endDate){
+            if (this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)||this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)) return 0;
+            else {
+                String[] actual = this.properties.getFECHA_HORA().split("/");
+                String[]
+                int mes = Integer.parseInt(actual[1]);
+                int dia = Integer.parseInt(actual[2]);
+                if (mes == mComp) {
+                    if (dia > dComp) return 1;
+                    if (dia < dComp) return -1;
+                }
+                if (mes > mComp) return 1;
+                if (mes < mComp) return -1;
+            }
+        return -2;
+        }
 }
