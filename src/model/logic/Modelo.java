@@ -2,6 +2,7 @@ package model.logic;
 
 import model.data_structures.*;
 
+
 import java.awt.geom.Area;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  * Definicion del modelo del mundo
  */
 public class Modelo<T, S extends Comparable<S>> {
+<<<<<<< HEAD
     /**
      * Atributos del modelo del mundo
      */
@@ -301,13 +303,86 @@ public class Modelo<T, S extends Comparable<S>> {
         comparacion[1] = res;
         return comparacion;
     }
-    public void primerComparendoPorLocalidad(String localidad) {
+    public void mostrarComparendosLocalidadFecha(String Localidad, String startDate, String endDate) {
+        ArregloDinamico<String> infracList = new ArregloDinamico<>(listaComparendos.getTamanio());
+        ArregloDinamico<Integer> res = new ArregloDinamico<>(listaComparendos.getTamanio());
+        Nodo<Features> iter = (Nodo<Features>) listaComparendos.getPrimerNodo();
+        while(iter!=null){
+            Boolean bLocal = iter.getInfo().getProperties().getLOCALIDAD().equalsIgnoreCase(Localidad);
+            Boolean bStartD = iter.getInfo().compareToP();
+            Boolean bEndD =;
+            if (&&)
+            iter = iter.getSiguiente();
+        }
     }
 
-    public void getComparendosPorFechaOrdenados(String pFecha) {
+    public String comparendosPorFecha_hora(String FECHA_HORA)
+    {
+        Nodo<Features> buscado = null;
+        Nodo<Features> actual = (Nodo<Features>) listaComparendos.getPrimerNodo();
+        ArregloDinamico copiado = new ArregloDinamico<Features>(listaComparendos.getTamanio());
+        while (actual != null) {
+            if (actual.getInfo().getProperties().getFECHA_HORA().equalsIgnoreCase(FECHA_HORA))
+            {
+                copiado.agregar(actual.getInfo());
+                tamanio++;
+            }
+            actual = actual.getSiguiente();
+        }
+        Features[] ordenar = new Features[copiado.darTamano()];
+        for (int i = 0; i < copiado.darTamano(); i++) {
+            ordenar[i] = (Features) copiado.darElemento(i);
+        }
+        Shell.sort(ordenar);
+
+        String devolver = "";
+
+        for (int i = 0; i<ordenar.length; i++)
+        {
+            devolver += ordenar[i].getProperties().toString()+"\n";
+        }
+        return devolver;
     }
 
-    public void compareComparendosPorCodigoFecha(String pCodigo, String pFecha) {
+
+
+    public Object[] consultarNumInfraccionesMasComparendosPorTiempo(int Num, String startDate, String endDate) {
+
+
+        ArregloDinamico<String> lista1 = new ArregloDinamico<>(listaComparendos.getTamanio());
+        ArregloDinamico<Integer> lista2 = new ArregloDinamico<>(listaComparendos.getTamanio());
+        Integer fechaInicial = 0, fechaFinal = 0;
+        Features[] paraOrdenar = new Features[arregloD.darTamano()];
+        for (int i = 0; i<arregloD.darTamano();i++){
+            paraOrdenar[i] = (Features) arregloD.darElemento(i);
+        }
+        Merge.sortP(paraOrdenar);
+        for(int i = 0; i<paraOrdenar.length-1;i++){
+            String comparendo = paraOrdenar[i].getProperties().getINFRACCION();
+            if (paraOrdenar[i].compareToP(paraOrdenar[i+1])==0) {
+                if (comparendo.equalsIgnoreCase(startDate)) fechaInicial++;
+                if (comparendo.equalsIgnoreCase(endDate)) fechaFinal++;
+            }
+            else{
+                if (comparendo.equalsIgnoreCase(startDate)) fechaInicial++;
+                if (comparendo.equalsIgnoreCase(endDate)) fechaFinal++;
+                lista2.agregar(fechaFinal);
+                lista2.agregar(fechaInicial);
+                lista1.agregar(paraOrdenar[i].getProperties().getINFRACCION());
+                fechaInicial = 0;
+                fechaFinal = 0;
+                comparendo = paraOrdenar[i+1].getProperties().getINFRACCION();
+                if (comparendo.equalsIgnoreCase(startDate)) fechaInicial++;
+                if (comparendo.equalsIgnoreCase(endDate)) fechaFinal++;
+            }
+        }
+        lista1.agregar(paraOrdenar[paraOrdenar.length-1].getProperties().getINFRACCION());
+        lista2.agregar(fechaFinal);
+        lista2.agregar(fechaInicial);
+        Object[] comparacion = new Object[2];
+        comparacion[0] = lista1;
+        comparacion[1] = lista2;
+        return comparacion;
     }
 
     public Features getMayorOBJ() {
@@ -329,5 +404,6 @@ public class Modelo<T, S extends Comparable<S>> {
         }
         return nuevo;
     }
+
 }
 
