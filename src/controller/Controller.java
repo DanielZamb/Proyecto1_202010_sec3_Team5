@@ -107,8 +107,8 @@ public class Controller {
 					view.printMessage("Digite fecha final: \n");
 					eDate = lector.next();
 					modelo.mostrarComparendosLocalidadFecha(local,sDate,eDate);
-					view.printMessage("Comparación de comparendos en "+local+" desde "+sDate+" hasta "+eDate);
 					view.printMessage("Loading...");
+					view.printMessage("Comparación de comparendos en "+local+" desde "+sDate+" hasta "+eDate);
 					view.printMessage("INFRACCION | #COMPARENDOS");
 					Object[] res_ = modelo.mostrarComparendosLocalidadFecha(local,sDate,eDate);
 					ArregloDinamico<String> infracList_ = (ArregloDinamico<String>)res_[0];
@@ -126,9 +126,9 @@ public class Controller {
 					sDate_ = lector.next();
 					view.printMessage("Digite fecha final: \n");
 					eDate_ = lector.next();
+					view.printMessage("Loading...");
 					Object[] res__ = modelo.NInfraccionesMasComparendosPorTiempo(N,sDate_,eDate_);
 					view.printMessage("Ranking de las "+N+" mayores infracciones desde "+sDate_+" hasta "+eDate_);
-					view.printMessage("Loading...");
 					view.printMessage("INFRACCION | #COMPARENDOS");
 					String[] infracList__ = (String[]) res__[0];
 					Integer[] numC__ = (Integer[])res__[1];
@@ -136,7 +136,27 @@ public class Controller {
 						view.printMessage(infracList__[k]+" | "+ numC__[k]);
 					}
 					break;
-
+				case 9:
+					view.printMessage("Loading...");
+					Object[] res___  = modelo.generarHistograma();
+					ArregloDinamico<String> localilades = (ArregloDinamico<String>) res___[0];
+					ArregloDinamico<Integer> numL = (ArregloDinamico<Integer>) res___[1];
+					view.printMessage("Aproximación del número de comparendos por localidad.");
+					for(int l=0;l<localilades.darTamano();l++){
+						Boolean longt = ((String)localilades.darElemento(l)).length()<16;
+						String msg = (String) localilades.darElemento(l);
+						if (longt){
+							msg = String.format("%-16s",localilades.darElemento(l));
+						}
+						int ast = (int)numL.darElemento(l)/50;
+						if (((int)numL.darElemento(l)%50)>1) ast = ast + 1;
+						String msgA = "";
+						if (ast == 0) msgA ="sinComparendos";
+						String format = "%"+Integer.toString(ast)+"*";
+						msgA =String.format(format,"");
+						view.printMessage(msg+"|"+msgA);
+					}
+					break;
 				}
 
 		}

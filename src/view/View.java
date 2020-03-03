@@ -22,7 +22,9 @@ public class View
 			System.out.println("PARTE GRUPAL --------------------------------------");
 			System.out.println("7.Lista de todos los comparendos en orden alfabetico en una localidad que ocurrieron en un lapso de tiempo dado.");
 			System.out.println("8.Lista ordenada de los N códigos INFRACCION con más infracciones en un lapso de tiempo.");
+			System.out.println("9.Dar histograma del archivo");
 			System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");
+
 		}
 
 		public void printMessage(String mensaje) {

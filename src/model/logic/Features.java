@@ -103,6 +103,7 @@ public class Features implements Comparable<Features>{
                 sdia = Integer.parseInt(sDate[2]);
                 emes = Integer.parseInt(eDate[1]);
                 edia = Integer.parseInt(eDate[2]);
+                System.out.println(mes+" "+dia+" "+smes+" "+sdia+" "+emes+" "+edia);
                 if (mes>smes){
                     if (mes<emes){
                         if (dia<edia) return true;
@@ -117,12 +118,20 @@ public class Features implements Comparable<Features>{
                 }
                 if (mes == smes){
                     if (dia > sdia) return true;
+                    else return false;
                 }
                 if (mes == emes){
                     if (dia < edia) return true;
+                    else return false;
                 }
                 else return false;
             }
-        return false;
+        }
+        public int compareToL(Features that){
+        String[] thisF = this.getProperties().getLOCALIDAD().split("");
+        String[] thatF = that.getProperties().getLOCALIDAD().split("");
+        if (thisF[0].compareTo(thatF[0])<0) return -1;
+        if (thisF[0].compareTo(thatF[0])>0) return 1;
+        else return 0;
         }
 }

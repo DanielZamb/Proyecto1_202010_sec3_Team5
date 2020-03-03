@@ -197,7 +197,14 @@ public class Modelo<T, S extends Comparable<S>> {
             }
             iter = iter.getSiguiente();
         }
-        Object[] comparacion = contarComparendos(toSort, queueTemp, infracList, res);
+        toSort = new Features[queueTemp.size() - 1];
+        queueTemp.dequeue();
+        while (!queueTemp.isEmpty()) {
+            Nodo<Features> nodoTemp = queueTemp.dequeue();
+            toSort[i] = nodoTemp.getInfo();
+            ++i;
+        }
+        Object[] comparacion = contarComparendos(toSort, infracList, res);
         return comparacion;
     }
 
@@ -222,7 +229,15 @@ public class Modelo<T, S extends Comparable<S>> {
             }
             iter = iter.getSiguiente();
         }
-        Object[] comparacion = contarComparendos(toSort, queueTemp, infracList, res);
+        int i = 0;
+        toSort = new Features[queueTemp.size() - 1];
+        queueTemp.dequeue();
+        while (!queueTemp.isEmpty()) {
+            Nodo<Features> nodoTemp = queueTemp.dequeue();
+            toSort[i] = nodoTemp.getInfo();
+            ++i;
+        }
+        Object[] comparacion = contarComparendos(toSort, infracList, res);
         infracList = (ArregloDinamico<String>) comparacion[0];
         res = (ArregloDinamico<Integer>) comparacion[1];
         nInfrac = new String[N];
@@ -242,21 +257,30 @@ public class Modelo<T, S extends Comparable<S>> {
             nInfrac[k] = infrac;
             datosInfrac[k] = numC;
             k++;
+            mayor=0;
         }
         comparacion[0]=nInfrac;
         comparacion[1]=datosInfrac;
         return comparacion;
     }
-
-    public Object[] contarComparendos(Features[] toCount, Queue<Features> queueTemp, ArregloDinamico<String> infracList, ArregloDinamico<Integer> res) {
-        int i = 0, cont = 0;
-        toCount = new Features[queueTemp.size() - 1];
-        queueTemp.dequeue();
-        while (!queueTemp.isEmpty()) {
-            Nodo<Features> nodoTemp = queueTemp.dequeue();
-            toCount[i] = nodoTemp.getInfo();
-            ++i;
+    public Object[] generarHistograma() {
+        ArregloDinamico<String> localidades = new ArregloDinamico<>(listaComparendos.getTamanio());
+        ArregloDinamico<Integer> res = new ArregloDinamico<>(listaComparendos.getTamanio());
+        Nodo<Features> iter = (Nodo<Features>) listaComparendos.getPrimerNodo();
+        Features[] toSort = new Features[listaComparendos.getTamanio()];
+        int k=0,cont=0;
+        while (iter != null) {
+            toSort[k]=iter.getInfo();
+            k++;
+            iter = iter.getSiguiente();
         }
+        Quick.sortL(toSort);
+        Object[] listaR = contarComparendos(toSort,localidades,res);
+        return listaR;
+    }
+
+    public Object[] contarComparendos(Features[] toCount, ArregloDinamico<String> List, ArregloDinamico<Integer> res) {
+        int cont = 0;
         Merge.sortP(toCount);
         for (int f = 0; f < toCount.length; f++) {
             Boolean comp = false;
@@ -264,7 +288,7 @@ public class Modelo<T, S extends Comparable<S>> {
             if (!comp) {
                 cont++;
                 res.agregar(cont);
-                infracList.agregar(toCount[f].getProperties().getINFRACCION());
+                List.agregar(toCount[f].getProperties().getINFRACCION());
                 cont = 0;
             }
             if (comp) {
@@ -273,14 +297,10 @@ public class Modelo<T, S extends Comparable<S>> {
         }
 
         Object[] comparacion = new Object[2];
-        comparacion[0] = infracList;
+        comparacion[0] = List;
         comparacion[1] = res;
         return comparacion;
     }
-
-    public void generarHistograma() {
-    }
-
     public void primerComparendoPorLocalidad(String localidad) {
     }
 
