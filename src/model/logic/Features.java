@@ -94,7 +94,6 @@ public class Features implements Comparable<Features>{
             if (this.properties.getFECHA_HORA().equalsIgnoreCase(startDate)||this.properties.getFECHA_HORA().equalsIgnoreCase(endDate)) return true;
             else {
                 String[] actual = this.properties.getFECHA_HORA().split("/");
-<<<<<<< HEAD
                 String[] sDate = startDate.split("/");
                 String[] eDate = endDate.split("/");
                 int mes,dia,smes,sdia,emes,edia;
@@ -104,7 +103,6 @@ public class Features implements Comparable<Features>{
                 sdia = Integer.parseInt(sDate[2]);
                 emes = Integer.parseInt(eDate[1]);
                 edia = Integer.parseInt(eDate[2]);
-                System.out.println(mes+" "+dia+" "+smes+" "+sdia+" "+emes+" "+edia);
                 if (mes>smes){
                     if (mes<emes){
                         if (dia<edia) return true;
@@ -120,14 +118,6 @@ public class Features implements Comparable<Features>{
                 if (mes == smes){
                     if (dia > sdia) return true;
                     else return false;
-=======
-                //String[];
-                int mes = Integer.parseInt(actual[1]);
-                int dia = Integer.parseInt(actual[2]);
-                if (mes == mComp) {
-                    if (dia > dComp) return 1;
-                    if (dia < dComp) return -1;
->>>>>>> fa2bd2a29442cda392220fe6f6a5d04c4ea8eea6
                 }
                 if (mes == emes){
                     if (dia < edia) return true;

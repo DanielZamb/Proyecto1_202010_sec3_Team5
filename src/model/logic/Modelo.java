@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
  * Definicion del modelo del mundo
  */
 public class Modelo<T, S extends Comparable<S>> {
-<<<<<<< HEAD
     /**
      * Atributos del modelo del mundo
      */
@@ -303,18 +302,6 @@ public class Modelo<T, S extends Comparable<S>> {
         comparacion[1] = res;
         return comparacion;
     }
-    public void mostrarComparendosLocalidadFecha(String Localidad, String startDate, String endDate) {
-        ArregloDinamico<String> infracList = new ArregloDinamico<>(listaComparendos.getTamanio());
-        ArregloDinamico<Integer> res = new ArregloDinamico<>(listaComparendos.getTamanio());
-        Nodo<Features> iter = (Nodo<Features>) listaComparendos.getPrimerNodo();
-        while(iter!=null){
-            Boolean bLocal = iter.getInfo().getProperties().getLOCALIDAD().equalsIgnoreCase(Localidad);
-            Boolean bStartD = iter.getInfo().compareToP();
-            Boolean bEndD =;
-            if (&&)
-            iter = iter.getSiguiente();
-        }
-    }
 
     public String comparendosPorFecha_hora(String FECHA_HORA)
     {
@@ -346,9 +333,7 @@ public class Modelo<T, S extends Comparable<S>> {
 
 
 
-    public Object[] consultarNumInfraccionesMasComparendosPorTiempo(int Num, String startDate, String endDate) {
-
-
+    public Object[] consultarNumInfraccionesMasComparendosPorTiempo(String startDate, String endDate) {
         ArregloDinamico<String> lista1 = new ArregloDinamico<>(listaComparendos.getTamanio());
         ArregloDinamico<Integer> lista2 = new ArregloDinamico<>(listaComparendos.getTamanio());
         Integer fechaInicial = 0, fechaFinal = 0;
