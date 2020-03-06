@@ -197,7 +197,7 @@ public class Controller {
 
                             }
                         }
-                         else System.out.print("\n");
+                         else System.out.print("Sin comparendos"+"\n");
                     }
                     break;
 
