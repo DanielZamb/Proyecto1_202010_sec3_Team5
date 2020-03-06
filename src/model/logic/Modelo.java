@@ -205,7 +205,7 @@ public class Modelo<T, S extends Comparable<S>> {
             toSort[i] = nodoTemp.getInfo();
             ++i;
         }
-        Object[] comparacion = contarComparendos(toSort, infracList, res);
+        Object[] comparacion = contarComparendos(toSort, infracList, res,false);
         return comparacion;
     }
 
@@ -238,7 +238,7 @@ public class Modelo<T, S extends Comparable<S>> {
             toSort[i] = nodoTemp.getInfo();
             ++i;
         }
-        Object[] comparacion = contarComparendos(toSort, infracList, res);
+        Object[] comparacion = contarComparendos(toSort, infracList, res,false);
         infracList = (ArregloDinamico<String>) comparacion[0];
         res = (ArregloDinamico<Integer>) comparacion[1];
         nInfrac = new String[N];
@@ -275,21 +275,31 @@ public class Modelo<T, S extends Comparable<S>> {
             k++;
             iter = iter.getSiguiente();
         }
-        Quick.sortL(toSort);
-        Object[] listaR = contarComparendos(toSort,localidades,res);
+        Object[] listaR = contarComparendos(toSort,localidades,res,true);
         return listaR;
     }
 
-    public Object[] contarComparendos(Features[] toCount, ArregloDinamico<String> List, ArregloDinamico<Integer> res) {
+    public Object[] contarComparendos(Features[] toCount, ArregloDinamico<String> List, ArregloDinamico<Integer> res,Boolean histograma) {
         int cont = 0;
+        if (histograma){
+            Quick.sortL(toCount);
+        }
+        else{
         Merge.sortP(toCount);
+        }
         for (int f = 0; f < toCount.length; f++) {
             Boolean comp = false;
-            if (!(f == toCount.length - 1)) comp = toCount[f].compareToP(toCount[f + 1]) == 0;
+            if (!(f == toCount.length - 1) && !histograma) comp = toCount[f].compareToP(toCount[f + 1]) == 0;
+            else if (!(f == toCount.length - 1)) comp = toCount[f].compareToL(toCount[f + 1]) == 0;
             if (!comp) {
                 cont++;
                 res.agregar(cont);
+                if (histograma){
+                List.agregar(toCount[f].getProperties().getLOCALIDAD());
+                }
+                else{
                 List.agregar(toCount[f].getProperties().getINFRACCION());
+                }
                 cont = 0;
             }
             if (comp) {

@@ -4,9 +4,10 @@
     <list default="true" id="4a530e87-66e9-40ee-b5a1-92f9a928aa1b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/data_structures/IStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/IStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/data_structures/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/Stack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/logic/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Features.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/logic/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Modelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +23,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Proyecto1_202010_sec3_Team5 - copia" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,7 +79,10 @@
       <workItem from="1583159929278" duration="23743000" />
       <workItem from="1583251537593" duration="7775000" />
       <workItem from="1583290555483" duration="1144000" />
-      <workItem from="1583206689007" duration="2324000" />
+      <workItem from="1583206689007" duration="2924000" />
+      <workItem from="1583518542391" duration="1471000" />
+      <workItem from="1583527693081" duration="844000" />
+      <workItem from="1583531130119" duration="5292000" />
     </task>
     <servers />
   </component>
@@ -99,6 +103,15 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="queueTemp.last.info.properties" />

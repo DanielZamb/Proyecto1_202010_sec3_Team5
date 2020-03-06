@@ -127,10 +127,9 @@ public class Features implements Comparable<Features>{
             }
         }
         public int compareToL(Features that){
-        String[] thisF = this.getProperties().getLOCALIDAD().split("");
-        String[] thatF = that.getProperties().getLOCALIDAD().split("");
-        if (thisF[0].compareTo(thatF[0])<0) return -1;
-        if (thisF[0].compareTo(thatF[0])>0) return 1;
+        int comp =this.getProperties().getLOCALIDAD().compareTo(that.getProperties().getLOCALIDAD());
+        if (comp > 0) return 1;
+        if (comp < 0) return -1;
         else return 0;
         }
 }

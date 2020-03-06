@@ -13,7 +13,6 @@ public class Stack<T> extends ListaEncadenada implements IStack {
     public boolean isEmpty()
     {
         boolean respuesta = false;
-        tamanio = super.getTamanio();
         if (tamanio==0)
         {
             respuesta = true;

@@ -174,22 +174,30 @@ public class Controller {
                 case 9:
                     view.printMessage("Loading...");
                     Object[] res___ = modelo.generarHistograma();
-                    ArregloDinamico<String> localilades = (ArregloDinamico<String>) res___[0];
+                    ArregloDinamico<String> localidades = (ArregloDinamico<String>) res___[0];
                     ArregloDinamico<Integer> numL = (ArregloDinamico<Integer>) res___[1];
                     view.printMessage("Aproximación del número de comparendos por localidad.");
-                    for (int l = 0; l < localilades.darTamano(); l++) {
-                        Boolean longt = ((String) localilades.darElemento(l)).length() < 16;
-                        String msg = (String) localilades.darElemento(l);
-                        if (longt) {
-                            msg = String.format("%-16s", localilades.darElemento(l));
+                    int t = 0;
+                    int r = 0;
+                    for (;t<localidades.darTamano();t++){
+                        System.out.print((String)localidades.darElemento(t));
+                        String l = (String)(localidades.darElemento(t));
+                        if (l.length()<17){
+                            for(int c =l.length();c<17;c++) {
+                                System.out.print('-');
+                                if (c == 16) System.out.print('|');
+                            }
                         }
-                        int ast = (int) numL.darElemento(l) / 50;
-                        if (((int) numL.darElemento(l) % 50) > 1) ast = ast + 1;
-                        String msgA = "";
-                        if (ast == 0) msgA = "sinComparendos";
-                        String format = "%" + Integer.toString(ast) + "*";
-                        msgA = String.format(format, "");
-                        view.printMessage(msg + "|" + msgA);
+                        Integer num = (Integer) numL.darElemento(t);
+                        Integer estrella  =  num/50;
+                        if (!(estrella == 0)){
+                            for( ;r<=estrella;r++){
+                            if (r == estrella) {System.out.print("\n"); r =0;break;}
+                            System.out.print('*');
+
+                            }
+                        }
+                         else System.out.print("\n");
                     }
                     break;
 

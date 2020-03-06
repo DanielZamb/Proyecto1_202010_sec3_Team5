@@ -1,7 +1,7 @@
 package model.data_structures;
 
 public interface IStack<T> {
-	 public boolean isEmpty();
+		 public boolean isEmpty();
 
 	    public void push(T nodo);
 
