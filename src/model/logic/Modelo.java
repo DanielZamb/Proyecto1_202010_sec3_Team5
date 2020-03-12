@@ -400,5 +400,27 @@ public class Modelo<T, S extends Comparable<S>> {
         return nuevo;
     }
 
+    public String primerComparendoPorLocalidad(String localidad) {
+        String respuesta = "No existe ningun comparendo en la localidad dada";
+        Nodo<Features> nodoRespuesta = null;
+        Nodo<Features> nodoActual = (Nodo<Features>) listaComparendos.getPrimerNodo();
+        boolean done = false;
+        while (nodoActual != null && !done)
+        {
+            if(nodoActual.getInfo().getProperties().getLOCALIDAD().equalsIgnoreCase(localidad))
+            {
+                nodoRespuesta = nodoActual;
+                done = true;
+            }
+            else
+                nodoActual= nodoActual.getSiguiente();
+        }
+        if (nodoRespuesta != null)
+        {
+            respuesta = nodoRespuesta.getInfo().getProperties().toString();
+        }
+        return respuesta;
+    }
+
 }
 

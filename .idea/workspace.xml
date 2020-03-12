@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a530e87-66e9-40ee-b5a1-92f9a928aa1b" name="Default Changelist" comment="">
+    <list default="true" id="bddae322-1a7f-478a-9851-88c85b701d15" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/data_structures/IStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/IStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/data_structures/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/data_structures/Stack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/logic/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Features.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/logic/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/logic/Modelo.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,18 +28,6 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -102,12 +88,34 @@
       </map>
     </option>
   </component>
+  <component name="WindowStateProjectService">
+    <state x="570" y="357" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584048231870">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="570" y="357" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1584048231870" />
+    <state width="1440" height="491" key="GridCell.Tab.0.bottom" timestamp="1584048236910">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="491" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584048236910" />
+    <state width="1440" height="491" key="GridCell.Tab.0.center" timestamp="1584048236907">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="491" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584048236907" />
+    <state width="1440" height="491" key="GridCell.Tab.0.left" timestamp="1584048236906">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="491" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584048236906" />
+    <state width="1440" height="491" key="GridCell.Tab.0.right" timestamp="1584048236908">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="491" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584048236908" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
-          <line>182</line>
+          <line>183</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

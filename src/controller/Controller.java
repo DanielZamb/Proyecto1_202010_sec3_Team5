@@ -71,6 +71,7 @@ public class Controller {
 					dato= lector.next();
 					view.printMessage("Loading...");
 					view.printMessage("Comparendo encontrado en los datos: \n");
+					view.printMessage(modelo.primerComparendoPorLocalidad(dato));
 					break;
 
 				case 2:
